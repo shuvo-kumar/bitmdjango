@@ -1,0 +1,59 @@
+
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+   <link rel="stylesheet" href="{% static 'css/style.css' %}">
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css" integrity="sha512-YWzhKL2whUzgiheMoBFwW8CKV4qpHQAEuvilg9FAn5VJUDwKZZxkJNuGM4XkWuk94WCrrwslk8yWNGmY1EduTA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+   <script src="{% static 'js/sctipt.js' %}"></script>
+ 
+
+
+
+</head>
+<body>
+    <div class="container">
+        <div>
+            <img src="{% static 'images/logo.png' %}" alt="No image" width="100%">
+        </div>
+        <h1>{{ title }}</h1>
+        <table border="0" width="100%">
+            <thead class="darkback">
+                <tr>
+                    <td>ID</td>
+                    <td>Students Name</td>
+                    <td>Email Address </td>
+                    <td> Date of Birth</td>
+                    <td>Gender</td>
+                </tr>
+
+            </thead>
+
+            <tbody>
+                {% for std in students  %}
+                <tr>
+                    <td>{{ std.id }}</td>
+                    <td>{{  std.name }}</td>
+                    <td> {{ std.email }} </td>
+                    <td> {{ std.dob }}</td>
+                    <td>{{ std.gender }}</td>
+                </tr>
+                 {% endfor %}
+
+                
+
+            </tbody>
+            <tfoot>
+
+            </tfoot>
+        </table>
+        <button onclick="welcome();" class="redbtn"> <i class="fab fa-android fa-3x "></i> Click Me</button>
+
+
+    </div>
+</body>
+</html>

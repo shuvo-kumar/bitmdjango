@@ -1,0 +1,29 @@
+
+.container{
+    width: 80%;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 15px;
+    padding-right: 15px;
+    
+}
+
+.darkback
+{
+    background-color: black;
+    color: white;
+
+}
+.redbtn
+{
+    background-color: red;
+    color: white;
+
+}
+
+.greenbtn
+{
+    background-color: green;
+    color: white;
+
+}

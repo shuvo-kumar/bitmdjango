@@ -3,7 +3,7 @@ from django.shortcuts import render
 # Create your views here.
 
 def list (request):
-    # variable
+    # variable>
     students =[
         {'id': 1, 'name':'shuvo', 'email':'shuvo2email@gmail.com', 'dob':'2000-01-02', 'gender': 'Male' },
         {'id': 2, 'name':'Aramn', 'email':'aramn@gmail.com', 'dob':'1900-01-02', 'gender': 'Male' },

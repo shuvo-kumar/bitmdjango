@@ -12,7 +12,10 @@ cd myproject
 myproject--> python manage.py startapp myapp
 //django run করার জন্য
 
+
+
 python manage.py migrate
+//Create an empty development database by running the following command:
 // django validation check করার জন্য
 
 python manage.py createsuperuser

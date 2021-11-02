@@ -35,3 +35,8 @@ http://127.0.0.1:8000/admin
 Day2
 
 django-admin startproject lesson2_pr
+
+
+day4
+
+py .\manage.py makemigrations

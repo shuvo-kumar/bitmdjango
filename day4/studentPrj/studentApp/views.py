@@ -1,4 +1,5 @@
 from django.shortcuts import render
+from studentPrj.studentApp.models import Student
 
 # Create your views here.
 

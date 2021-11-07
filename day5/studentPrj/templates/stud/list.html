@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div>
+        <div>
+            
+        </div>
+        <div>
+            <h1>List of All Students</h1>
+            <hr>
+        </div>
+        <div>
+            <table>
+                <thead>
+                    <tr> Student ID</tr>
+                    <tr> Student Name</tr>
+                    <tr> Email</tr>
+                    <tr> Date of Birth</tr>
+                    <tr> Gender</tr>
+                    <tr> Action</tr>
+
+                </thead>
+                <tbody> 
+                    
+                    {% for stud in students  %}
+                    <tr> </tr>
+                    <tr> {{stud.id}}</tr>
+                    <tr> {{ stud.name }}</tr>
+                    <tr> {{ stud.email }}</tr>
+                    <tr> {{ stud.dob }}</tr>
+                    <tr> {{ stud.gender }}</tr>
+                    <td></td>
+                    {% endfor %}
+                        
+                </tbody>
+                <tfoot></tfoot>
+            </table>
+        </div>
+    </div>
+</body>
+</html>

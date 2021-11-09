@@ -16,26 +16,29 @@
             <hr>
         </div>
         <div>
-            <table>
+            <table border="1">
                 <thead>
-                    <tr> Student ID</tr>
-                    <tr> Student Name</tr>
-                    <tr> Email</tr>
-                    <tr> Date of Birth</tr>
-                    <tr> Gender</tr>
-                    <tr> Action</tr>
+                    <tr>
+                    <td> Student ID</td>
+                    <td> Student Name</td>
+                    <td> Email</td>
+                    <td> Date of Birth</td>
+                    <td> Gender</td>
+                    <td> Action</td>
+                </tr>
 
                 </thead>
                 <tbody> 
                     
                     {% for stud in students  %}
-                    <tr> </tr>
-                    <tr> {{stud.id}}</tr>
-                    <tr> {{ stud.name }}</tr>
-                    <tr> {{ stud.email }}</tr>
-                    <tr> {{ stud.dob }}</tr>
-                    <tr> {{ stud.gender }}</tr>
-                    <td></td>
+                    <td> 
+                    <td> {{stud.id}}</td>
+                    <td> {{ stud.name }}</td>
+                    <td> {{ stud.email }}</td>
+                    <td> {{ stud.dob }}</td>
+                    <td> {{ stud.gender }}</td>
+                    
+                    </tr>
                     {% endfor %}
                         
                 </tbody>

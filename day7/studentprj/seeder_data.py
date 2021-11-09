@@ -5,6 +5,8 @@ import django
 django.setup()
 
 from studentapp.models import Student
+from django.contrib.auth.models import User
+from django.contrib.auth.hashers  import make_password
 from faker import Faker
 
 fakezen = Faker()
@@ -25,6 +27,14 @@ def populate_data(n=10):
 if __name__ == '__main__':
     print('Populating Data Please Wait.............')
     print('#' *50)
-    populate_data(30)
+    populate_data(10)
     print('Populating Data Completed')
     print('#' *50)
+    
+    user = User.objects.get_or_create(username = 'Shuvo', 
+                                      password = make_password('pass1234'),
+                                      email = 'shuvo@g.com', first_name ='Sabysachi', 
+                                      last_name = 'Halder', 
+                                      is_staff = True, 
+                                      is_superuser = True, 
+                                      is_active = True)

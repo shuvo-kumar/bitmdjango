@@ -36,7 +36,55 @@
     <tfoot>
 
     </tfoot>
-  </table>
-</div>
-</div>
-{% endblock content %}
+  </table><hr>
+  <!-- Paginigation starts -->
+  {% if students.has_other_pages %}
+  <nav aria-label="Page navigation example">
+    <ul class="pagination">
+      {% if students.has_previous %}
+      <li class="page-item">
+        <a class="page-link" href="?page={{ students.previous_page_number }}" aria-label="Previous">
+          <span aria-hidden="true">&laquo;</span>
+        </a>
+      </li>
+      {% else %}
+      <li class="page-item disabled">
+        <span aria-hidden="true">&laquo;</span>
+      </li>
+      {% endif %}
+  
+      {% for i in students.paginator.page_range %}
+  
+      {% if students.number == i %}
+      <li class="page-item active" aria-current="page">
+        <a class="page-link" href="#">{{ i }}</a>
+      </li>
+  
+      {% else %}
+      <li class="page-item"><a class="page-link" href="?page={{ i }}">{{ i }}</a></li>
+      {% endif %}
+      {% endfor %}
+  
+      <li class="page-item">
+        {% if students.has_next %}
+  
+      <li class="page-item">
+        <a class="page-link" href="?page={{students.next_page_number}}" aria-label="Next">
+          <span aria-hidden="true">&raquo;</span>
+        </a>
+      </li>
+  
+      {% else %}
+      <li class="page-item disabled">
+  
+        <span aria-hidden="true">&raquo;</span>
+      </li>
+      {% endif %}
+      </li>
+    </ul>
+  </nav>
+  
+  {%endif%}
+  </div>
+  </div>
+  {% endblock content %}

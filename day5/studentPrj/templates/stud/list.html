@@ -31,12 +31,13 @@
                 <tbody> 
                     
                     {% for stud in students  %}
-                    <td> 
+                    <tr> 
                     <td> {{stud.id}}</td>
                     <td> {{ stud.name }}</td>
                     <td> {{ stud.email }}</td>
                     <td> {{ stud.dob }}</td>
                     <td> {{ stud.gender }}</td>
+                    <td></td>
                     
                     </tr>
                     {% endfor %}

@@ -26,6 +26,20 @@
         </div>
         <main>
             <div style="min-height: 600px;">
+                {% if messages %}
+                <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                    <strong>
+                
+                        
+                            {% for message in messages %}
+                                {{ message }}
+                            {% endfor %}
+
+                
+                    </strong>
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+                {% endif %}
                 {% block content %}
 
                 

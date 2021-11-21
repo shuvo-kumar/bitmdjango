@@ -5,7 +5,7 @@ from django.shortcuts import redirect, render
 from studentapp.models import Student
 from django.core.paginator import Paginator
 
-from .forms import StudentForm
+from .forms import StudentForm,SignUpForm
 from django.contrib import messages
 
 
@@ -52,6 +52,39 @@ def details(request, id):
     
     context = {'title' : 'Student Details', 'form':form, 'student':student}
     return render(request, 'stud/view.html',context)
-    
-    
-    
+        
+def edit(request, id):
+    if request.method == "POST":
+        student = Student.objects.get(pk = id)
+        form = StudentForm(request.POST or None, instance=student)
+        if form.is_valid():
+            form.save()
+            messages.success(request,'Data Updated Succesfully !')
+            return redirect('list')
+    else:
+        student = Student.objects.get(pk = id)
+        form = StudentForm(request.POST or None, instance=student)
+        
+    context = {'title' : 'Edit Student ', 'form':form}
+    return render(request, 'stud/create.html',context)
+
+def delete(request, id):
+    student = Student.objects.get(pk = id)
+    student.delete()
+    messages.success(request,'Data Delete Succesfully !')
+    return redirect('list')
+
+def register(request):
+    if request.method == "POST":
+        form = SignUpForm(request.POST)
+        if form.is_valid():
+            user = form.save()
+            user.save()
+            messages.success(request,'User create Succesfully !')
+            return redirect('home')
+    else :
+        form = SignUpForm()     
+    context = {'title' : 'Register User ', 'form':form}
+    return render(request, 'registration/register.html',context)
+        
+        

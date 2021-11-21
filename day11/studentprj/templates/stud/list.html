@@ -33,9 +33,9 @@
         <td>{{ stud.dob|date:'m-d-Y' }}</td>
         <td>{{ stud.gender }}</td>
         <td>
-          <a href="{% url 'view' stud.id %}" class = "btn btn-info" title = "view" ><i class = "fa fa-eye fa-2x"></i></a>
-          <a href="#" class = "btn btn-warning" title = "view" ><i class = "fa fa-edit fa-2x"></i></a>
-          <a href="#" class = "btn btn-danger" title = "view" ><i class="fas fa-trash-restore-alt"></i></a>
+          <a href="{% url 'view' stud.id %}" class = "btn btn-info" title = "View" ><i class = "fa fa-eye fa-2x"></i></a>
+          <a href="{% url 'edit' stud.id %}" class = "btn btn-warning" title = "Edit" ><i class = "fa fa-edit fa-2x"></i></a>
+          <a href="{% url 'delete' stud.id %}" class = "btn btn-danger" title = "Delete" ><i class="fas fa-trash-restore-alt"></i></a>
         </td>
       </tr>
       {% endfor %}

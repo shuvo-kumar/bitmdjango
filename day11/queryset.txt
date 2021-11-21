@@ -1,0 +1,87 @@
+Open Your termenal
+python manage.py shell
+
+from studentapp.models import Student
+
+Student >module ; all()> function
+Student.objects.all()
+
+get() > method to query data
+Student.objects.get(value)
+Student.objects.get(id =2)
+Student.objects.get(name = 'dipon')
+Student.objects.get(name = 'Mira Madhu')
+Student.objects.get(name = 'mira Madhu')
+
+name__iexact > ignore exact 
+Student.objects.get(name__iexact = 'mira Madhu')
+name__icontains > any match
+Student.objects.get(name__icontains = 'tan')
+
+Multiple data [filter] (__in =)
+--------------
+Student.objects.filter(id__in =[1,3,7])
+
+id>3 __get
+Student.objects.filter(id__gt =3)
+<gte =3
+Student.objects.filter(id__gte =3)
+
+id<3 
+Student.objects.filter(id__lt =3)
+Student.objects.filter(id__lte =3)
+
+
+Shortling Data
+-------------------------
+Student.objects.order_by()
+Student.objects.order_by('name')
+
+Student.objects.order_by('-name')
+Student.objects.order_by('-id')
+
+Dictonaly convt data
+--------------------
+
+Student.objects.values()
+
+Student.objects.values('id','name')
+
+
+Insert Data
+---------------
+
+std1 = Student.objects.create()
+std1 = Student.objects.create(name='Shuvo Kumar Shill', email = 'sss@ff.dff', dob ='2001-01-20',gender = 'Male')
+
+std2 = Student.objects.create(name='MAruf', email = 'ss@ff.dff', dob ='2002-01-20',gender = 'Male')
+
+
+
+---------------
+
+for std in Student.objects.raw():
+for std in Student.objects.raw('select id, name,email from studentapp_student'):
+    print(std.id,std.name,std.email)
+
+
+Deleted data
+------------
+
+Student.objects.filter(pk =8).update(name='Arina')
+
+
+Student.objects.filter(pk =8).delete()
+
+
+
+Data seeder
+--------
+
+pip install faker
+
+
+
+
+
+

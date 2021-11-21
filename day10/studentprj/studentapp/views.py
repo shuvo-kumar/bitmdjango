@@ -44,5 +44,14 @@ def create(request):
         form = StudentForm()     
         
     context = {'title' : 'Create Student', 'form':form}
-    return render(request, 'stud/create.html',context,)
+    return render(request, 'stud/create.html',context)
+
+def details(request, id):
+    student = Student.objects.get(pk = id)
+    form = StudentForm(request.POST or None, instance=student)
+    
+    context = {'title' : 'Student Details', 'form':form, 'student':student}
+    return render(request, 'stud/view.html',context)
+    
+    
     

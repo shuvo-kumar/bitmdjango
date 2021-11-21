@@ -32,7 +32,11 @@
         <td>{{ stud.email }}</td>
         <td>{{ stud.dob|date:'m-d-Y' }}</td>
         <td>{{ stud.gender }}</td>
-        <td></td>
+        <td>
+          <a href="{% url 'view' stud.id %}" class = "btn btn-info" title = "view" ><i class = "fa fa-eye fa-2x"></i></a>
+          <a href="#" class = "btn btn-warning" title = "view" ><i class = "fa fa-edit fa-2x"></i></a>
+          <a href="#" class = "btn btn-danger" title = "view" ><i class="fas fa-trash-restore-alt"></i></a>
+        </td>
       </tr>
       {% endfor %}
 

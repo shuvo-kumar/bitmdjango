@@ -27,6 +27,7 @@ updates:
 
   - package-ecosystem: "pip"
     directory: "/"
+    directory: "/requirements.txt"
     schedule:
       interval: "daily"
     allow:

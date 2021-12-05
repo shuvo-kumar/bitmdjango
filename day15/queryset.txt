@@ -1,0 +1,4 @@
+
+
+install django-crispy-forms
+pip install django-import-export

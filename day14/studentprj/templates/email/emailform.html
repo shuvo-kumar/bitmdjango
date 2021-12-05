@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+
+{% block title %}
+    Email
+{% endblock title %}
+    
+    {% block content %}
+    <form action="" method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit" class="btn btn-primary">Send Email</button>
+
+    </form>
+        
+    {% endblock content %}
+        

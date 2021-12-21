@@ -1,0 +1,67 @@
+{% extends 'base.html' %}
+
+{% block content %}
+   <form action="" method="POST">
+       {% csrf_token %}
+
+       {% if messages %}
+    
+    {% for message in messages %}
+
+    <div class="alert alert-warning alert-dismissible fade show" role="alert">
+        <strong>{{ message }}</strong> You should check in on some of those fields below.
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+      </div>
+        
+    {% endfor %}
+    
+    
+        
+    {% endif %}
+
+       <a href="{% url 'create' %}" class="btn btn-primary mb-5">
+            Add New Record
+       </a>
+       <div class="container">
+           <table class="mdl-data-table" style="width:100%" id="emptable" data-page-length ="5">
+            <thead  class="table-dark" >  
+                <tr>
+                   <td>Employee ID</td>
+                   <td>Employee Name</td>
+                   <td>Email Address</td>
+                   <td>Date of Birth</td>
+                   <td>Salary</td>
+                   <td>Photo</td>
+                   <td>...</td>
+               </tr>
+            </thead>
+            <tbody>    
+               {% for emp in object_list %}
+               <tr>
+                <td>{{ emp.id }}</td>
+                <td>{{ emp.name|title }}</td>
+                <td>{{ emp.email }}</td>
+                <td>{{ emp.dob|date:'Y-m-d' }}</td>
+                <td>{{ emp.salary }}</td>
+                <td>
+                    <img src="{{ emp.photo.url }}" alt="" width="100px">
+                </td>
+                <td>
+                    <a href="{% url 'detail' emp.id %}"><i class="fa fa-eye fa-2x"></i></a>
+                    <a href="{% url 'edit' emp.id %} "><i class="fa fa-edit fa-2x"></i></a>
+                    <a href=""><i class="fa fa-trash fa-2x"></i></a>
+                </td>
+
+            </tr>
+               {% endfor %}
+            </tbody>
+                   
+               
+           </table>
+
+           
+       </div>
+
+   </form>
+{% endblock content %}
+    

@@ -1,0 +1,102 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    {% include 'mdbcss.html' %}
+    {% block stylesheet %}
+        
+    {% endblock stylesheet %}
+        
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-12">
+                    <h1>
+                        <a href="">
+                            <img src="{% static 'images/logo.png' %}" alt="" class="logo" width="100%">
+                        </a>
+                    </h1>
+                </div>
+
+            </div>
+            {% include 'includes/navbar.html' %}
+        </div>
+    </header>
+    <br><br>
+    <main>
+        <div class="container" style="min-height:600px;">
+            
+            {% block content %}
+                
+            {% endblock content %}
+                
+
+        </div>
+        {% include 'includes/footer.html' %}
+    </main>
+
+    {% include 'mdbjs.html' %}
+    
+    {% block javascript %}
+        
+    {% endblock javascript %}
+
+    <script>
+        $(function(){
+            setTimeout(function(){
+                $('.alert').hide();
+            },2000);
+            $("#id_dob").datepicker({
+                format:"yyyy-mm-dd",
+                autoclose: true,
+                todayHightlight: true,
+                endDate:'-0d'
+            });
+            $("#id_photo").change(function() {
+                readURL(this);
+            });
+            
+            $("#my_modal").modal("show");
+
+            $('#emptable').DataTable({
+                "dom":'f<t>ip',
+                //"dom": '<"top"f>rt<"bottom"p><"clear">', // Positions table elements
+                "lengthMenu": [
+                [10, 25, 50, -1],
+                [10, 25, 50, "All"]
+                ]
+
+            });
+        });
+    
+        function readURL(input) {
+            var filepath = input.value;
+            var allowed_extensions = /(\.jpg|\.png|\.gif)$/i;
+            if (!allowed_extensions.exec(filepath)) {
+                alert('Invalid file type !!!');
+                input.value = '';
+                return false;
+            } 
+            else 
+            {
+                if (input.files && input.files[0]) {
+                    var reader = new FileReader();
+                    reader.onload = function(e) {
+                        $('.blah')
+                            .attr('src', e.target.result).width(500);
+                    };
+                    reader.readAsDataURL(input.files[0]);
+                }
+            }
+        }
+            
+    </script>
+        
+</body>
+</html>

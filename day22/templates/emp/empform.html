@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}  
+
+
+
+<form action="" method="POST" enctype="multipart/form-data">
+
+    <!-- cross reference mendatory -->
+    {% csrf_token %}
+    
+    
+        
+
+<div class="row">
+    <div class="col-sm-6">
+        <div class="card">
+           <div class="card-header">
+            <h1>{{ heading }}</h1>
+           </div>
+            <div class="card-body">
+                {% load crispy_forms_tags %}
+                {{ form | crispy }}
+                <br>
+                <button type="submit" class="btn btn-primary mt-3">Submit</button>
+                <a href="{% url 'list' %}" class="btn btn-warning mt-3">Back to list</a>
+            </div>
+          </div> 
+
+    </div>
+    <div class="col-sm-6">
+        <div class="card">
+            <div class="card-header">
+             ...
+            </div>
+             <div class="card-body">
+               <img src="{{ object.photo.url }}" alt="" class="blah" width="500px">
+             </div>
+           </div> 
+    </div>
+
+</div>
+</form> 
+    
+{% endblock content %}
+    
+
+

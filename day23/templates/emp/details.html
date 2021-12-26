@@ -1,0 +1,68 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}  
+
+
+
+<form action="" method="POST" enctype="multipart/form-data">
+
+    <!-- cross reference mendatory -->
+    {% csrf_token %}
+    
+    
+        
+
+<div class="row">
+    <div class="col-sm-6">
+        <div class="card">
+           <div class="card-header">
+            <h1>Employee Details</h1>
+           </div>
+            <div class="card-body">
+              <div class="form-group row">
+                <label class="col-sm-4">
+                    Employee ID
+                </label>
+                <div class="col-sm-4">{{ object.id }}</div>
+              </div>
+              <div class="form-group row">
+                <label class="col-sm-4">
+                    Employee Name
+                </label>
+                <div class="col-sm-4">{{ object.name }}</div>
+              </div>
+              <div class="form-group row">
+                <label class="col-sm-4">
+                    Email Address
+                </label>
+                <div class="col-sm-5">{{ object.email }}</div>
+              </div>
+              <div class="form-group row">
+                <label class="col-sm-4">
+                    Date Of Birth
+                </label>
+                <div class="col-sm-4">{{ object.dob|date:'Y-m-d' }}</div>
+              </div>
+              <hr>
+                <a href="{% url 'list' %}" class="btn btn-warning mt-3">Back to list</a>
+            </div>
+          </div> 
+
+    </div>
+    <div class="col-sm-6">
+        <div class="card">
+            <div class="card-header">
+             ...
+            </div>
+             <div class="card-body">
+               <img src="{{ object.photo.url }}" alt="" class="blah" width="500px">
+             </div>
+           </div> 
+    </div>
+
+</div>
+</form> 
+    
+{% endblock content %}
+    

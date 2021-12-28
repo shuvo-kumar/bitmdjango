@@ -1,11 +1,14 @@
-from django.shortcuts import render
+from django.shortcuts import render,get_object_or_404
 from django.urls.base import reverse_lazy
 from django.views.generic import *
-from empapp.models import Employee
+from empapp.models import Employee,Department
 from empapp.forms import EmployeeForm
 from django.contrib import messages
 from django.urls import reverse
 from django.db.models import Count
+from django.db.models import Q
+
+
 
 # Create your views here.
 
@@ -77,5 +80,46 @@ def showchart(request, chartType):
     
     context= {'title' : 'Chart', 'labels' : labels, 'data' : data, 'chartType': chartType }
     return render(request, 'emp/chart.html',context)
+        
+def show(request, departmentname = None):
+    departments = None
+    employees = None
+    
+    
+    if departmentname != None:
+        departments = get_object_or_404(Department,name=departmentname)
+        employees = Employee.objects.filter(department=departments)
+        page_employees = employees
+        emp_count = employees.count()
+    
+    else:
+        employees = Employee.objects.all().order_by('id')
+        page_employees = employees
+        emp_count = employees.count()
+        
+    context = {
+        'object_list':page_employees,
+        'emp_count': emp_count,
+    }
+    return render(request, 'emp/list.html', context)
+
+def search(request):
+    if 'keyword' in request.GET:
+        keyword = request.GET['keyword']
+        if keyword:
+            employees=Employee.objects.order_by('-name').filter(Q(name__contains=keyword)| 
+                                                                Q(email__contains=keyword)|
+                                                                Q(salary__contains=keyword) |
+                                                                Q(dob__contains=keyword)
+                                                                )
+            emp_count = employees.count()
+            
+    context = {
+        'object_list':employees,
+        'emp_count': emp_count,
+    }
+    return render(request, 'emp/list.html', context)
+            
+        
         
         

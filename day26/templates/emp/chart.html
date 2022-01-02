@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+
+
+{% block title %}  {{ title }}{% endblock title %}
+
+
+{% block content %}
+<div class="container" style="width:75%">
+    <canvas id="bar-chart" width="800" height="450"></canvas>
+</div>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
+<script>
+    $(function(){
+        new Chart(document.getElementById("bar-chart"), {
+            type: '{{ chartType }}',
+            data: {
+              labels:  {{ labels | safe}},
+              datasets: [
+                {
+                  label: "Empoloyee/Department",
+                  backgroundColor: ["#3e95cd", "#8e5ea2","#3cba9f","#e8c3b9","#c45850"],
+                  data: {{ data | safe}}
+
+                }
+              ]
+            },
+            options: {
+              legend: { display: false },
+              title: {
+                display: true,
+                text: 'Department wise Empoloyee Report'
+              }
+            }
+        });
+
+    });
+</script>
+
+
+{% endblock content %}
+    
+<!-- https://tobiasahlin.com/blog/chartjs-charts-to-get-you-started/ -->

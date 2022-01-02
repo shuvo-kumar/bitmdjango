@@ -6,9 +6,48 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 </head>
-<body>
-    <div>
-        <h1>This is my REST Project</h1>
+<body ng-app="my-app">
+    <div ng-controller="my-controller">
+       <hr>
+       <table>
+           <thead>
+               <tr>
+                   <th>ID</th>
+                   <th>Name</th>
+                   <th>Email</th>
+                   <th>...</th>
+                
+               </tr>
+           </thead>
+           <tbody>
+               <tr ng-repeat="emp in employees">
+                   <td>[[emp.id]]</td>
+                   <td>[[emp.name]]</td>
+                   <td>[[emp.email]]</td>
+                   <td>[[...]]</td>
+               </tr>
+           </tbody>
+       </table>
     </div>
 </body>
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.8.2/angular.min.js" integrity="sha512-7oYXeK0OxTFxndh0erL8FsjGvrl2VMDor6fVqzlLGfwOQQqTbYsGPv4ZZ15QHfSk80doyaM0ZJdvkyDcVO7KFA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script type="text/javascript">
+    var app = angular.module("my-app",[],function($interpolateProvider){
+        $interpolateProvider.startSymbol('[[');
+        $interpolateProvider.endSymbol(']]');
+      });
+
+      app.controller("my-controller",function($scope,$http,$window){
+        $scope.employees = [];
+        $scope.current = null;
+        var url ='http://127.0.0.1:8000/emp';
+        $http.get(url).then(function(response){
+        $scope.employees=response.data;
+      },function(response){
+        $scope.msg='SomeThink Worng!';
+       });
+     });
+
+</script>
 </html>
